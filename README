@@ -1,0 +1,12 @@
+Om te installeren:
+Opties -> extra's -> extensions -> rechtsboven developer mode aanzetten -> load unpacked extension -> het mapje met de code selecteren - > enjoy :)
+
+supported shortkeys:
+
+ctrl + s -> Save and compile your code
+ctrl + shift + s -> Submit your code
+ctrl + r -> Run your tests
+ctrl + shift + r -> Run the specification tests
+
+------
+more to come :)
