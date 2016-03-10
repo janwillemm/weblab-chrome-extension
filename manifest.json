@@ -1,13 +1,14 @@
 {
-  "name": "Weblab plugin",
-  "version": "1.0.1",
-  "description": "This extension adds some nice features to the TUDelft weblab for the course TI1220 Concepts of Programming Languages",
+  "name": "Weblab test run shortcuts",
+  "manifest_version": 2,
+  "version": "1.1",
+  "description": "This extension adds some nice features to the TUDelft weblab environment.",
   "permissions": [
-    "tabs", "http://department.st.ewi.tudelft.nl/weblab/*"
+    "activeTab", "tabs", "https://weblab.tudelft.nl/"
   ],
   "content_scripts": [
     {
-      "matches": ["http://department.st.ewi.tudelft.nl/weblab/*"],
+      "matches": ["https://weblab.tudelft.nl/*"],
       "js": ["inject.js"]
     }
   ]

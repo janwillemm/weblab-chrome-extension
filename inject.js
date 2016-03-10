@@ -1,34 +1,25 @@
-//alert("Injected javascript successfully!");
-window.addEventListener("keydown", function(event) {
+console.log("Keyboard shortcuts for running tests are enabled");
+window.addEventListener("keydown", function(e) {
   // Bind to both command (for Mac) and control (for Win/Linux)
-  var modifier = event.ctrlKey || event.metaKey;
-  var altKey = event.altKey;
-  var shiftKey = event.shiftKey;
+  var modifier = e.ctrlKey || e.metaKey;
+  var altKey = e.altKey;
+  var shiftKey = e.shiftKey;
   
-	var e = document.createEvent("HTMLEvents");
-    e.initEvent("click", true, true);
+  var clickEvent = document.createEvent("HTMLEvents");
+  clickEvent.initEvent("click", true, true);
 
-  // press ctrl + s to save and compile!
-  if (modifier && event.keyCode == 83) {
-	  event.preventDefault();
-      if(shiftKey)
-        var element = document.getElementById("submit");
-      else
-	      var element = document.getElementById("save");
-	  element.dispatchEvent(e);
+  // ctrl + s: save
+  // ctrl + shift + s: submit
+  if (modifier && e.keyCode == 83) {
+    e.preventDefault();
+    var el = document.getElementById(shiftKey ? "submit" : "save");
+    el.dispatchEvent(clickEvent);
   }
-  // press alt + r to test your code.
-  else if((altKey && event.keyCode == 82) || (modifier && event.keyCode == 82)){
-  	event.preventDefault();
-  	var element = document.getElementById("compilerOutput").firstChild;
-  	testElement = (shiftKey) ? element.nextSibling.nextSibling : element;
-    testElement.dispatchEvent(e);
+  // ctrl | alt + r: Run your test
+  // ctrl | alt + shift + r: Run spec-tests
+  if((altKey && e.keyCode == 82) || (modifier && e.keyCode == 82)){
+  	e.preventDefault();
+    var el = document.getElementById(shiftKey ? "specTestBtn" : "userTestBtn");
+    el.dispatchEvent(clickEvent);
   }
-
 }, false);
-
-window.fCopyToClipboard = function(rSource){
-  rSource.select()
-  if(window.clipboardData){ var r=clipboardData.setData('Text',rSource.value); return 1; }
-  else return 0
-}
